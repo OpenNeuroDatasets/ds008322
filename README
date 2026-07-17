@@ -1,0 +1,154 @@
+Duorhythm: EEG hyperscanning during dyadic joint rhythmic action
+================================================================
+
+Overview
+--------
+EEG hyperscanning dataset of pairs (dyads) of participants playing a cooperative
+two-player rhythmic shooting game, in which partners coordinate the timing of
+their shots, plus resting-state recordings. Ten dyads were recorded.
+
+Each session simultaneously recorded both members of a dyad on a single Brain
+Products amplifier as one 129-channel stream: participant 1 on a 64-channel cap
+(Fp1..Iz), participant 2 on a second 64-channel cap (Fp1_2..Iz_2 in the source),
+and one (unused) marker-index channel. In this BIDS release each dyad is split
+into TWO subjects so that per-participant metadata maps cleanly and standard
+single-subject tooling works. Because both caps share one amplifier clock, the
+two members of a pair are sample-aligned: sample i of one subject and sample i of
+its partner are the same instant. Pair membership is in participants.tsv
+(`pair`, `partner`).
+
+Subjects and pairing
+--------------------
+- 10 dyads -> 20 subjects (sub-01 .. sub-20).
+- pair-0k contains sub-(2k-1) [participant 1] and sub-(2k) [participant 2].
+- See participants.tsv for the `pair`/`partner` links and self-reported
+  gender / age band / acquaintance_length (how long the pair had known each other).
+
+Tasks / runs (per subject)
+--------------------------
+- task-duorhythm                  : the cooperative shooting game (~21 min, 1000 Hz).
+- task-rest acq-pre, acq-post     : resting-state recordings before (pre) and after
+                                    (post) the task (no behaviour recorded).
+
+The two rests use the acq-pre / acq-post label rather than run-01/02 because they
+are not interchangeable repetitions: one is recorded before the joint task and one
+after. Keeping a single task-rest (so tools find all resting-state) while marking
+the timepoint with acq- makes the pre/post structure explicit and queryable.
+
+Task structure and conditions
+-----------------------------
+The game is organised into 10 blocks x 9 trials = 90 trials of 12 s each. Each
+block contains 3 trials of each of three target types (so 30 trials per condition
+overall). On each trial both participants shoot a target together; the target
+type sets how their shots must be timed:
+
+  trial_type    code  target  behaviour
+  alternating    1    black   partners shoot alternately (AA / alternating action)
+  simultaneous   2    green   partners shoot simultaneously (SA / simultaneous action)
+  free           3    blue    partners shoot freely, no timing constraint (F)
+
+(An in-game white "Bait" circle penalises the score and is not a trial type.)
+
+Events
+------
+sub-*_task-duorhythm_events.tsv contains, per participant:
+- 90 trial rows: onset, duration (~12 s), trial_type (above), value (raw trigger
+  code), trial_number.
+- button-press rows (trial_type = "buttonpress"): every shot fired by THAT
+  participant, with `shot_target` = the target struck (0 = miss; 1-3 = the condition's
+  colour, matching the trial_type table above -- 1 black, 2 green, 3 blue; 4 = rare
+  white "Bait" distractor) and the `trial_number` it falls in. Values 1-3 equal the active
+  condition code (derived empirically from shot-vs-condition co-occurrence, all 24,012 shots).
+Column definitions are in task-duorhythm_events.json. Trial timing comes from the
+behavioural "Task" stream trigger channel and is mapped to the nearest EEG sample
+(the same alignment the lab used to epoch rawdata_trial_mat); reconstructed trial
+labels reproduce rawdata_trial_mat's `trialtype` exactly for all 10 sessions.
+
+Continuous behaviour (beh/)
+---------------------------
+The continuous game signals (100 Hz) are stored per participant in the behavioural
+(beh/) datatype as a BIDS continuous recording:
+  sub-XX/beh/sub-XX_task-duorhythm_recording-gamedata_physio.tsv.gz  (+ .json)
+Columns: crosshair_x / crosshair_y, crosshair_vx / crosshair_vy, shot_confirm,
+shot_target, and the shared block score. Crosshair positions (crosshair_x/_y) are the
+game's 2D Unity world coordinates (origin-centred floats); velocities (crosshair_vx/_vy)
+are their per-second time-derivatives (Unity world units per second). SamplingFrequency
+= 100 Hz; StartTime aligns the sample grid to the EEG via the shared LSL clock. The beh/ folder marks this as
+behaviour; the file uses BIDS' continuous-recording suffix `_physio` (there is no
+continuous time-series `_beh` suffix), with `recording-gamedata` + the JSON Columns
+carrying the meaning. (Discrete trial and shot events are in eeg/…_events.tsv; this is
+the continuous form, mirroring the EEG per-participant split.)
+
+EEG acquisition
+---------------
+- Amplifier: Brain Products BrainAmp; cap: EASYCAP "Standard 64Ch actiCAP snap"
+  (order code CACS-64), 64 channels in the standard extended 10/10 layout
+  (EEGPlacementScheme).
+- No electrode-position files (electrodes.tsv / coordsystem.json) are included, because
+  electrode positions were not digitised for individual participants. BrainVision files
+  store channel labels only, not 3D coordinates; the layout is the standard cap template,
+  fully specified by the channel names. To obtain template coordinates, apply MNE's
+  `easycap-M1` montage. This has been verified against the manufacturer's cap document
+  (CACS-64): all 64 channel names and their order match the published layout exactly, and
+  they also match MNE's `easycap-M1` template and the lab's chanlocs.mat one-for-one.
+- Sampling frequency: 1000 Hz. Data stored in microvolts (BrainVision float).
+- Online reference: FCz. Ground: Fpz. Impedance kept below 25 kOhm.
+- Hardware band-pass: 0.016 - 1000 Hz. Mains 60 Hz (a 60 Hz notch is applied in
+  the lab's preprocessing, not in this raw release; SoftwareFilters = n/a).
+- Recording dates were dropped during conversion, so the data carry no acquisition
+  timestamps.
+
+Questionnaire (phenotype/)
+--------------------------
+The self-report questionnaire has five parts. Part 1 (demographics + relationship) is in participants.tsv. Parts
+2-5 are four distinct 9-item Likert subscales (1 = Strongly Disagree .. 7 =
+Strongly Agree), each its own phenotype file (one row per participant; items are
+positional item_01..item_09 with the exact wording in the matching .json):
+- phenotype/display_comfort.tsv      (Part 2, pre-experiment)
+- phenotype/game_familiarity.tsv     (Part 3, pre-experiment)
+- phenotype/coordination_skill.tsv   (Part 4, post-experiment)
+- phenotype/coordination_level.tsv   (Part 5, post-experiment)
+
+Data-quality notes (survey / questionnaire)
+-------------------------------------------
+Resolved with Eric Loh (2026-06-24); concerns the Likert subscales only --
+demographics in participants.tsv are retained:
+- sub-06 (0116_2): the survey was restarted, so the real response begins partway
+  down the file (at the demographics row). The pre-restart rows are discarded and
+  the four subscales use the post-restart blocks. Complete.
+- sub-02, sub-04, sub-10, sub-20 (all P2): only the pre-experiment half of the
+  questionnaire was recorded (software logging limitation + procedural oversight).
+  The pre-experiment subscales (display_comfort = Part 2, game_familiarity = Part 3)
+  are retained; the post-experiment subscales (coordination_skill = Part 4,
+  coordination_level = Part 5) are n/a (see KnownIssues in those phenotype JSONs).
+- sub-16 (0318_2): logged in a different file format (unquoted, comma-padded); the
+  protocol flagged it as possibly mis-logged. Its four blocks parse normally and are
+  included; not specifically addressed in Eric's review.
+
+Provenance / conversion
+-----------------------
+Converted from the original Lab Streaming Layer XDF recordings with
+the pipeline notebooks (`1_eeg_to_bids.ipynb` for EEG, `2_build_events.ipynb` for events, `3_build_physio.ipynb` for continuous game data, `4_build_phenotype.ipynb` for the questionnaire), using pyxdf + MNE +
+MNE-BIDS, following the lab's documented method (Confluence "Data collection and
+storage"; Chen Lam "Eric" Loh's PhD thesis appendix). EEG conversion splits the
+128 EEG channels into the two participants (rows 1-64 = P1, 65-128 = P2; the
+flat `MkIdx` channel is dropped), converts microvolts to volts, and applies the
+easycap-M1 montage. Original raw data live at /bucket/FroeseU/duorhythm. Source
+artefacts not in this release (epoched data in rawdata_trial_mat/, the full
+behavioural Task stream, survey CSVs) remain with the lab.
+
+Known limitations
+-----------------
+- No electrode-position files (electrodes.tsv / coordsystem.json) are included:
+  electrode positions were not digitised. The montage is the standard EasyCap M1
+  template (extended 10/10), fully given by the channel names; apply MNE's
+  `easycap-M1` to obtain template coordinates.
+
+Ethics: approved by the OIST Human Subjects Research Review Committee, approval
+no. HSR-2024-019-5.
+
+References
+----------
+Appelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896).https://doi.org/10.21105/joss.01896
+
+Pernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103.https://doi.org/10.1038/s41597-019-0104-8

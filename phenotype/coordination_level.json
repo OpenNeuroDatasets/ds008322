@@ -1,0 +1,122 @@
+{
+    "MeasurementToolMetadata": {
+        "Description": "Part 5: Perception of Coordination Level. Nine-item self-report Likert subscale (1=Strongly Disagree .. 7=Strongly Agree), administered post-experiment. From the Duorhythm questionnaire."
+    },
+    "participant_id": {
+        "Description": "Participant identifier (matches participants.tsv)."
+    },
+    "item_01": {
+        "Description": "My partner and I felt like a single unit during the game.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_02": {
+        "Description": "Coordination between my partner and I felt seamless.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_03": {
+        "Description": "Both my partner and I contributed equally to our performance.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_04": {
+        "Description": "The level of coordination achieved with my partner met or exceeded my expectations.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_05": {
+        "Description": "We maintained a steady coordination level from start to finish.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_06": {
+        "Description": "My partner and I were able to enhance our coordination as the game progressed.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_07": {
+        "Description": "We handled high-pressure or challenging moments in the game without losing our coordination.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_08": {
+        "Description": "When we faced disruptions, my partner and I swiftly regained our coordinated rhythm.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_09": {
+        "Description": "I trust in our combined ability to coordinate successfully in any game scenario.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "KnownIssues": {
+        "sub-02": "Post-experiment questionnaire half (Parts 4-5) was not recorded (software logging limitation + procedural oversight); the pre-experiment subscales (Parts 2-3) are retained ",
+        "sub-04": "Post-experiment questionnaire half (Parts 4-5) was not recorded (software logging limitation + procedural oversight); the pre-experiment subscales (Parts 2-3) are retained ",
+        "sub-10": "Post-experiment questionnaire half (Parts 4-5) was not recorded (software logging limitation + procedural oversight); the pre-experiment subscales (Parts 2-3) are retained ",
+        "sub-20": "Post-experiment questionnaire half (Parts 4-5) was not recorded (software logging limitation + procedural oversight); the pre-experiment subscales (Parts 2-3) are retained "
+    }
+}

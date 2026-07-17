@@ -178,8 +178,7 @@
    actiCAP snap, hardware band-pass 0.016-1000 Hz, PowerLineFrequency 60 Hz.
  - README updated with task/condition definitions and data-quality notes.
 
-1.0.0 2026-06-17
- - Initial BIDS conversion from the original XDF recordings.
- - Each dyad split into two subjects (sub-01 .. sub-20); pair/partner links in participants.tsv.
- - Tasks: task-duorhythm, task-rest run-01, task-rest run-02 (BrainVision, 1000 Hz, 64 ch/subject).
- - standard_1020 montage; participant demographics from survey CSVs.
+1.0.0 2026-07-17
+  - Initial OpenNeuro deposit of the Duorhythm BIDS dataset (EEG hyperscanning + continuous behaviour + phenotype; 20 subjects / 10 dyads).
+  - BIDS 1.9.0 raw release; CC0-1.0; ethics HSR-2024-019-5.
+  - Corresponds to local staging version 1.22.0 (see CHANGES).

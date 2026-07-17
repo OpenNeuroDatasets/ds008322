@@ -1,3 +1,7 @@
+1.0.1 2026-07-17
+  - Page setup for Scientific Data review: HowToAcknowledge cites OpenNeuro accession/DOI; ReferencesAndLinks add public code repo + BIDS/MNE-BIDS citations.
+  - Search metadata completed (domain, design, modalities eeg/beh, tasks, trial count, healthy controls, cross-sectional).
+  - Private draft retained; not published. Reviewer link available separately.
 1.22.0 2026-07-16
  - beh/*_physio.json: removed the "Levels" object from the shot_target column (all 20
    files). shot_target is a continuous 100 Hz recording stored as floats, so a categorical

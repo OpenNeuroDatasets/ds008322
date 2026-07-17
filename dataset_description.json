@@ -21,7 +21,11 @@
     "EthicsApprovals": [
         "Approved by the OIST Human Subjects Research Review Committee (approval no. HSR-2024-019-5)."
     ],
-    "ReferencesAndLinks": [],
+    "ReferencesAndLinks": [
+        "https://github.com/Froese-Unit/duorhythm-code",
+        "https://doi.org/10.21105/joss.01896",
+        "https://doi.org/10.1038/s41597-019-0104-8"
+    ],
     "GeneratedBy": [
         {
             "Name": "1_eeg_to_bids.ipynb",

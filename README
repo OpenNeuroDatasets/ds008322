@@ -14,7 +14,7 @@ and one (unused) marker-index channel. In this BIDS release, each dyad is split
 into two participant ID codes, so that standard single-subject tooling works. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned: sample i of one subject and sample i of its partner are the same instant. Partner pairs are mapped in participants.tsv
 (`pair`, `partner`).
 
-Participants and pairing
+Participants and Pairing
 --------------------
 - 10 dyads -> 20 subjects (sub-01 .. sub-20).
 - See participants.tsv for the `pair`/`partner` links and self-reported
@@ -30,7 +30,7 @@ The two rests use the acq-pre / acq-post label rather than run-01/02 because the
 are not interchangeable repetitions: one is recorded before the joint task and one
 after. Keeping a single task-rest allows for tools to find all task-rest.
 
-Task structure and conditions
+Task Structure and Conditions
 -----------------------------
 The game is organized into 10 blocks x 9 trials = 90 trials of 12 s each. Each
 block contains 3 trials of each of three target types (so 30 trials per condition
@@ -56,7 +56,7 @@ sub-*_task-duorhythm_events.tsv contains, per participant:
 Column definitions are in task-duorhythm_events.json. Trial timing comes from the
 behavioural "Task" stream trigger channel and is mapped to the nearest EEG sample.
 
-Behavioural responses (beh/)
+Behavioural Responses (beh/)
 ---------------------------
 The continuous game signals (100 Hz) are stored per participant in the behavioural
 (beh/) datatype as a BIDS continuous recording:
@@ -70,7 +70,7 @@ behaviour; the file uses BIDS' continuous-recording suffix `_physio`, with `reco
 carrying the meaning. (Discrete trial and shot events are in eeg/…_events.tsv; this is
 the continuous form, mirroring the EEG per-participant split.)
 
-EEG acquisition
+EEG Acquisition
 ---------------
 - Amplifier: Brain Products BrainAmp; cap: EASYCAP "Standard 64Ch actiCAP snap"
   (order code CACS-64), 64 channels in the standard extended 10/10 layout
@@ -97,7 +97,7 @@ positional item_01..item_09 with the exact wording in the matching .json):
 - phenotype/coordination_skill.tsv   (Part 4, post-task)
 - phenotype/coordination_level.tsv   (Part 5, post-task)
 
-Data-quality notes (survey / questionnaire)
+Data-Quality Notes
 -------------------------------------------
 - sub-02, sub-04, sub-10, sub-20: only the pre-task half of the
   questionnaire was recorded (due to software logging limitation + procedural oversight).

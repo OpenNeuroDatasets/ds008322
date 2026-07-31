@@ -14,13 +14,13 @@ and one (unused) marker-index channel. In this BIDS release, each dyad is split
 into two participant ID codes, so that standard single-subject tooling works. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned: sample i of one subject and sample i of its partner are the same instant. Partner pairs are mapped in participants.tsv
 (`pair`, `partner`).
 
-Subjects and pairing
+Participants and pairing
 --------------------
 - 10 dyads -> 20 subjects (sub-01 .. sub-20).
 - See participants.tsv for the `pair`/`partner` links and self-reported
   gender / age band / acquaintance_length (how long the pair had known each other).
 
-Tasks / runs (per subject)
+Tasks
 --------------------------
 - task-duorhythm                  : the cooperative shooting game (~20 min).
 - task-rest acq-pre, acq-post     : resting-state recordings before (pre) and after
@@ -56,7 +56,7 @@ sub-*_task-duorhythm_events.tsv contains, per participant:
 Column definitions are in task-duorhythm_events.json. Trial timing comes from the
 behavioural "Task" stream trigger channel and is mapped to the nearest EEG sample.
 
-Continuous behaviour (beh/)
+Behavioural responses (beh/)
 ---------------------------
 The continuous game signals (100 Hz) are stored per participant in the behavioural
 (beh/) datatype as a BIDS continuous recording:
@@ -111,11 +111,6 @@ Converted from the original Lab Streaming Layer .xdf recordings with
 the pipeline notebooks (`1_eeg_to_bids.ipynb` for EEG, `2_build_events.ipynb` for events, `3_build_physio.ipynb` for continuous game data, and `4_build_phenotype.ipynb` for the questionnaire, which can be found at https://github.com/Froese-Unit/duorhythm-code), using pyxdf, MNE, and MNE-BIDS. EEG conversion split the 128 EEG channels into the two participants (rows 1-64 = P1, 65-128 = P2; the
 flat `MkIdx` channel was dropped), and applied the
 easycap-M1 montage.
-
-Known limitations
------------------
-- No electrode-position files (electrodes.tsv/coordsystem.json) are included. Electrode positions were not digitised. The montage was the standard EasyCap M1
-  template (extended 10/10). Apply MNE's `easycap-M1` to obtain template coordinates.
 
 Ethics: approved by the OIST Human Subjects Research Review Committee, approval
 no. HSR-2024-019-5.

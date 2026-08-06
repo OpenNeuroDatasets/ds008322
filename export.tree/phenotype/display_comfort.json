@@ -1,0 +1,116 @@
+{
+    "MeasurementToolMetadata": {
+        "Description": "Part 2: Comfort with Video Display. Nine-item self-report Likert subscale (1=Strongly Disagree .. 7=Strongly Agree), administered pre-experiment. From the Duorhythm questionnaire."
+    },
+    "participant_id": {
+        "Description": "Participant identifier (matches participants.tsv)."
+    },
+    "item_01": {
+        "Description": "I am comfortable with viewing content on a video display for extended periods of time.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_02": {
+        "Description": "I am able to focus on a video display without experiencing eye strain or discomfort.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_03": {
+        "Description": "I am used to playing video games or performing tasks on a video display.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_04": {
+        "Description": "I find it easy to read and interpret information on a video display.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_05": {
+        "Description": "I am comfortable with using a video display in various lighting conditions.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_06": {
+        "Description": "I am able to quickly adjust to changes in brightness or contrast on a video display.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_07": {
+        "Description": "I am comfortable with viewing fast-moving content on a video display.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_08": {
+        "Description": "I am able to follow moving objects on a video display without difficulty.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_09": {
+        "Description": "I am comfortable with using a video display at different viewing distances.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    }
+}

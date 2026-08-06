@@ -1,3 +1,5 @@
+1.0.2 2026-08-06
+  - Updated the README file. Descriptions were shortened so that they were more concise. Headings were edited to align with the dataset’s folder names.
 1.0.1 2026-07-17
   - Page setup for Scientific Data review: HowToAcknowledge cites OpenNeuro accession/DOI; ReferencesAndLinks add public code repo + BIDS/MNE-BIDS citations.
   - Search metadata completed (domain, design, modalities eeg/beh, tasks, trial count, healthy controls, cross-sectional).

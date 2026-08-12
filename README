@@ -22,9 +22,8 @@ Participants and Pairing
 
 Tasks
 --------------------------
-- task-duorhythm                  : the cooperative shooting game (~20 min).
-- task-rest acq-pre, acq-post     : resting-state recordings before (pre) and after
-                                    (post) the task (2 minutes for each rest).
+- task-duorhythm: the cooperative shooting game (~20 min).
+- task-rest acq-pre, acq-post: resting-state recordings before (pre) and after (post) the task (2 minutes for each rest).
 
 The two rests use the acq-pre / acq-post label rather than run-01/02 because they
 are not interchangeable repetitions: one is recorded before the joint task and one

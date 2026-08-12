@@ -22,10 +22,8 @@ Participants and Pairing
 
 Tasks
 --------------------------
-- task-duorhythm: the cooperative shooting game (~20 min).
-- task-rest acq-pre, acq-post: resting-state recordings before (pre) and after (post) the task (2 minutes for each rest).
-
-The two rests use the acq-pre / acq-post label. Keeping a single task-rest allows for tools to find all task-rest.
+- task-duorhythm: the cooperative shooting game (~20 min). Participants were instructed to shoot a target in three separate conditions: either at alternating times with their partner, simultaneously with their partner, or independently without coordinated timing.
+- task-rest acq-pre, acq-post: resting-state recordings before (pre) and after (post) the task (2 minutes for each rest). The two rests use the acq-pre / acq-post label.
 
 Task Instructions (stimuli/)
 --------------------------
@@ -34,11 +32,11 @@ Participants received instructions for task-duorhythm in a virtual tutorial. To 
 Task Structure and Conditions
 -----------------------------
 The game is organized into 10 blocks x 9 trials = 90 trials of 12 s each. Each
-block contains 3 trials of each of three target types (so 30 trials per condition
-overall). On each trial, both participants shoot a target together; the target
+block contains 3 trials of each of three target types. (So, 30 trials per condition
+overall.) On each trial, both participants shoot a target together; the target
 type indicates how their shots must be timed:
 
-Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely, no timing constraint). (An in-game white "Bait" circle penalizes the score and is not a trial type.)
+Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely, no timing constraint). An in-game white "Bait" circle penalizes the score and is not a trial type.
 
 Events
 ------
@@ -46,8 +44,8 @@ sub-*_task-duorhythm_events.tsv contains, per participant:
 - 90 trial rows: onset, duration (~12 s), trial_type (above), value (trigger
   code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), trial_number.
 - button-press rows (trial_type = "buttonpress"): every shot fired by that
-  participant, with shot_target = the target struck (0 = miss; 1-3 = the condition's
-  colour -- 1 for black, 2 for green, 3 for blue; 4 = white "Bait" distractor) and the trial_number it falls in. Values 1-3 equal the active condition code.
+  participant, with shot_target = the target struck (0 = miss; 1-3 = the target's
+  colour -- 1= black, 2 = green, 3 = blue; 4 = white) and the trial_number it falls in.
 Column definitions are in task-duorhythm_events.json. Trial timing comes from the
 behavioural "Task" stream trigger channel and is mapped to the nearest EEG sample.
 
@@ -60,10 +58,8 @@ Columns: crosshair_x / crosshair_y, crosshair_vx / crosshair_vy, shot_confirm,
 shot_target, and the shared block score. Crosshair positions (crosshair_x/_y) are the
 game's 2D Unity world coordinates; velocities (crosshair_vx/_vy)
 are their per-second time-derivatives (Unity world units per second). SamplingFrequency
-= 100 Hz; StartTime aligns the sample grid to the EEG via the shared LSL clock. The beh/ folder marks this as
-behaviour; the file uses BIDS' continuous-recording suffix `_physio`, with `recording-gamedata` + the JSON Columns
-carrying the meaning. (Discrete trial and shot events are in eeg/…_events.tsv; this is
-the continuous form, mirroring the EEG per-participant split.)
+= 100 Hz; StartTime aligns the sample grid to the EEG via the shared LSL clock. The files use BIDS' continuous-recording suffix `_physio`, with `recording-gamedata` + the JSON Columns
+carrying the meaning.
 
 EEG Acquisition
 ---------------

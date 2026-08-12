@@ -5,7 +5,7 @@ Overview
 --------
 EEG hyperscanning dataset of pairs (dyads) of participants playing a cooperative
 two-player rhythmic shooting game where partners coordinate the timing of
-their shots. Resting-state recordings are also included. The data were originally recorded using Lab Streaming Layer (LSL), which generated .xdf files for experimental sessions. The data were converted to BIDS, and the code for BIDS conversion can be found at [https://github.com/Froese-Unit/duorhythm-code](https://github.com/Froese-Unit/duorhythm-code).
+their shots. Resting-state recordings are also included.
 
 Ten dyads were recorded. Each session simultaneously recorded both members of a dyad on a single Brain
 Products amplifier as one 129-channel stream: participant 1 on a 64-channel cap and participant 2 on a second 64-channel cap. In this BIDS release, each dyad is split into two participant ID codes to more easily allow researchers to conduct single-participant analyses. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned. Partner pairs are mapped in participants.tsv (`pair`, `partner`).
@@ -40,18 +40,17 @@ sub-*_task-duorhythm_events.tsv contains, per participant:
 - 90 trial rows: onset, duration (~12 s), trial_type (above), value (trigger
   code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), and trial_number.
 - button-press rows (trial_type = "buttonpress"): Every shot fired by that
-  participant, with shot_target = the target struck (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the trial_number it falls in. Column definitions are in task-duorhythm_events.json. Trial timing comes from the behavioural "Task" stream trigger channel and is mapped to the nearest EEG sample.
+  participant, with shot_target = the target struck (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the trial_number it falls in. Column definitions are in task-duorhythm_events.json.
 
 Behavioural Responses (beh/)
 ---------------------------
 The continuous game signals (100 Hz) are stored per participant in the behavioural
-(beh/) datatype as a BIDS continuous recording:
-  sub-XX/beh/sub-XX_task-duorhythm_recording-gamedata_physio.tsv.gz  (+ .json)
+(beh/) datatype as sub-XX/beh/sub-XX_task-duorhythm_recording-gamedata_physio.tsv.gz.
 Columns: crosshair_x / crosshair_y, crosshair_vx / crosshair_vy, shot_confirm,
 shot_target, and the shared block score. Crosshair positions (crosshair_x/_y) are the
-game's 2D Unity world coordinates; velocities (crosshair_vx/_vy)
+game's 2D Unity world coordinates and velocities (crosshair_vx/_vy)
 are their per-second time-derivatives (Unity world units per second). SamplingFrequency
-= 100 Hz; StartTime aligns the sample grid to the EEG via the shared LSL clock. The files use BIDS' continuous-recording suffix `_physio`, with `recording-gamedata` + the JSON Columns
+= 100 Hz. StartTime aligns the sample grid to the EEG via the shared LSL clock. The files use BIDS' continuous-recording suffix `_physio`, with `recording-gamedata` + the JSON Columns
 carrying the meaning.
 
 EEG Acquisition

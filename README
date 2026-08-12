@@ -44,7 +44,7 @@ Events
 ------
 sub-*_task-duorhythm_events.tsv contains, per participant:
 - 90 trial rows: onset, duration (~12 s), trial_type (above), value (trigger
-  code marking the start of the trial: 11 = alternating, 21 = simultaneous, and 31 = free), trial_number.
+  code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), trial_number.
 - button-press rows (trial_type = "buttonpress"): every shot fired by that
   participant, with shot_target = the target struck (0 = miss; 1-3 = the condition's
   colour -- 1 for black, 2 for green, 3 for blue; 4 = white "Bait" distractor) and the trial_number it falls in. Values 1-3 equal the active condition code.

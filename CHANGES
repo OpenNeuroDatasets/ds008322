@@ -1,3 +1,6 @@
+1.0.4 2026-08-12
+  - Updated the README references to fit APA 7 styling.
+  - Fixed the formatting of README's Events description. Originally, vertical bars (|) were used to create a table, but this formatting did not save correctly. So, the description of trial types was written as a sentence.
 1.0.3 2026-08-06
   - Updated authors' names. The writing of some names was adjusted to follow how authors requested their names to be written. No authors were added or removed.
 1.0.2 2026-08-06

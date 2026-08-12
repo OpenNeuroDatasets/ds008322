@@ -1,0 +1,116 @@
+{
+    "MeasurementToolMetadata": {
+        "Description": "Part 3: Familiarity with Video Games. Nine-item self-report Likert subscale (1=Strongly Disagree .. 7=Strongly Agree), administered pre-experiment. From the Duorhythm questionnaire."
+    },
+    "participant_id": {
+        "Description": "Participant identifier (matches participants.tsv)."
+    },
+    "item_01": {
+        "Description": "I play video games regularly.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_02": {
+        "Description": "I feel confident in my ability to learn new video games quickly.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_03": {
+        "Description": "I am familiar with the controls and mechanics of most video games.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_04": {
+        "Description": "I can quickly learn and adapt to new control schemes when playing video games.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_05": {
+        "Description": "I often play video games that require coordination with another player.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_06": {
+        "Description": "I have experience playing video games that involve controlling a moving object or character.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_07": {
+        "Description": "I am comfortable with playing video games that require quick reactions and decision-making.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_08": {
+        "Description": "I am used to playing video games that involve strategy and planning.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    },
+    "item_09": {
+        "Description": "I am used to playing video games that involve teamwork or cooperation with another player.",
+        "Levels": {
+            "1": "Strongly Disagree",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "Strongly Agree"
+        }
+    }
+}

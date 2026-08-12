@@ -1,0 +1,37 @@
+{
+    "participant_id": {
+        "Description": "Unique participant identifier (sub-01 .. sub-20)."
+    },
+    "pair": {
+        "Description": "Dyad identifier. The two participants sharing a pair value were recorded simultaneously on a single Brain Products amplifier and are sample-aligned across brains. Within a pair the odd-numbered subject is participant 1 (Fp1..Iz) and the even-numbered subject is participant 2 (Fp1_2..Iz_2 in the source data)."
+    },
+    "partner": {
+        "Description": "participant_id of the other member of this participant's dyad."
+    },
+    "gender": {
+        "Description": "Self-reported gender (questionnaire Part 1 Q1).",
+        "Levels": {
+            "M": "Male",
+            "F": "Female",
+            "O": "Other"
+        }
+    },
+    "age_band": {
+        "Description": "Self-reported age bracket in years (questionnaire Part 1 Q2).",
+        "Levels": {
+            "20-29": "20-29 years",
+            "30-39": "30-39 years",
+            "40-50": "40-50 years"
+        }
+    },
+    "acquaintance_length": {
+        "Description": "How long the participant had known their dyad partner before the experiment (questionnaire Part 1 Q3).",
+        "Levels": {
+            "Less than 1 month": "Less than 1 month",
+            "More than 1 month": "More than 1 month",
+            "More than 6 months": "More than 6 months",
+            "More than 1 year": "More than 1 year",
+            "More than 5 years": "More than 5 years"
+        }
+    }
+}

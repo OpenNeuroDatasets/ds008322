@@ -1,0 +1,99 @@
+data:
+  attributes:
+    types:
+      resourceTypeGeneral: Dataset
+    contributors:
+      - name: Saisha S. Rankaduwa
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 1
+      - name: Chen Lam Loh
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 2
+      - name: Finda Dwi Putri
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 3
+      - name: Mariana Ganzerla Casagrande
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 4
+      - name: Aaron Cid-Ramirez
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 5
+      - name: Shannon Hayashi
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 6
+      - name: Brian Morrissey
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 7
+      - name: Tae Morrissey
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 8
+      - name: Alexander Hölken
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 9
+      - name: Tom Froese
+        givenName: ''
+        familyName: ''
+        nameType: Personal
+        nameIdentifiers: []
+        contributorType: Researcher
+        order: 10
+    creators:
+      - name: Saisha S. Rankaduwa
+        nameType: Personal
+      - name: Chen Lam Loh
+        nameType: Personal
+      - name: Finda Dwi Putri
+        nameType: Personal
+      - name: Mariana Ganzerla Casagrande
+        nameType: Personal
+      - name: Aaron Cid-Ramirez
+        nameType: Personal
+      - name: Shannon Hayashi
+        nameType: Personal
+      - name: Brian Morrissey
+        nameType: Personal
+      - name: Tae Morrissey
+        nameType: Personal
+      - name: Alexander Hölken
+        nameType: Personal
+      - name: Tom Froese
+        nameType: Personal
+    descriptions:
+      - description: N/A
+        descriptionType: Abstract

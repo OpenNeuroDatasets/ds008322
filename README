@@ -4,26 +4,22 @@ Duorhythm: EEG hyperscanning during dyadic joint rhythmic action
 Overview
 --------
 EEG hyperscanning dataset of pairs (dyads) of participants playing a cooperative
-two-player rhythmic shooting game, in which partners coordinate the timing of
-their shots, plus resting-state recordings. Ten dyads were recorded.
+two-player rhythmic shooting game where partners coordinate the timing of
+their shots. Resting-state recordings are also included. 
 
-Each session simultaneously recorded both members of a dyad on a single Brain
-Products amplifier as one 129-channel stream: participant 1 on a 64-channel cap
-(Fp1..Iz), participant 2 on a second 64-channel cap (Fp1_2..Iz_2 in the source),
-and one (unused) marker-index channel. In this BIDS release, each dyad is split
-into two participant ID codes, so that standard single-subject tooling works. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned: sample i of one subject and sample i of its partner are the same instant. Partner pairs are mapped in participants.tsv
-(`pair`, `partner`).
+Ten dyads were recorded. Each session simultaneously recorded both members of a dyad on a single Brain
+Products amplifier as one 129-channel stream: participant 1 on a 64-channel cap and participant 2 on a second 64-channel cap. In this BIDS release, each dyad is split into two participant ID codes to more easily allow researchers to conduct single-participant analyses. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned. Partner pairs are mapped in participants.tsv (`pair`, `partner`).
 
 Participants and Pairing
 --------------------
-- 10 dyads -> 20 subjects (sub-01 .. sub-20).
+- 10 dyads -> 20 participants (sub-01 .. sub-20).
 - See participants.tsv for the `pair`/`partner` links and self-reported
   gender / age band / acquaintance_length (how long the pair had known each other).
 
 Tasks
 --------------------------
 - task-duorhythm: the cooperative shooting game (~20 min). Participants were instructed to shoot a target in three separate conditions: either at alternating times with their partner, simultaneously with their partner, or independently without coordinated timing.
-- task-rest acq-pre, acq-post: resting-state recordings before (pre) and after (post) the task (2 minutes for each rest). The two rests use the acq-pre / acq-post label.
+- task-rest: resting-state recordings before (pre) and after (post) the task. Each task-rest was 2 minutes. Participants were instructed to keep their eyes open, hands on the table, and to view the fixation cross on the screen. The two rests use the acq-pre / acq-post label.
 
 Task Instructions (stimuli/)
 --------------------------
@@ -36,7 +32,7 @@ block contains 3 trials of each of three target types. (So, 30 trials per condit
 overall.) On each trial, both participants shoot a target together; the target
 type indicates how their shots must be timed:
 
-Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely, no timing constraint). An in-game white "Bait" circle penalizes the score and is not a trial type.
+Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely with no timing constraint). In each condition, there was also an in-game white "Bait" circle that reduces the score when hit and is not a trial type.
 
 Events
 ------

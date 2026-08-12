@@ -25,9 +25,7 @@ Tasks
 - task-duorhythm: the cooperative shooting game (~20 min).
 - task-rest acq-pre, acq-post: resting-state recordings before (pre) and after (post) the task (2 minutes for each rest).
 
-The two rests use the acq-pre / acq-post label rather than run-01/02 because they
-are not interchangeable repetitions: one is recorded before the joint task and one
-after. Keeping a single task-rest allows for tools to find all task-rest.
+The two rests use the acq-pre / acq-post label. Keeping a single task-rest allows for tools to find all task-rest.
 
 Task Instructions (stimuli/)
 --------------------------
@@ -38,7 +36,7 @@ Task Structure and Conditions
 The game is organized into 10 blocks x 9 trials = 90 trials of 12 s each. Each
 block contains 3 trials of each of three target types (so 30 trials per condition
 overall). On each trial, both participants shoot a target together; the target
-type sets how their shots must be timed:
+type indicates how their shots must be timed:
 
 Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely, no timing constraint). (An in-game white "Bait" circle penalizes the score and is not a trial type.)
 

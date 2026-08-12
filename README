@@ -37,12 +37,7 @@ block contains 3 trials of each of three target types (so 30 trials per conditio
 overall). On each trial, both participants shoot a target together; the target
 type sets how their shots must be timed:
 
-  trial_type         | code | target |behaviour
-  alternating      |     1   | black   |partners shoot alternately (AA / alternating action)
-  simultaneous |     2   | green  |partners shoot simultaneously (SA / simultaneous action)
-  free                  |     3   | blue     |partners shoot freely, no timing constraint (F)
-
-(An in-game white "Bait" circle penalizes the score and is not a trial type.)
+Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely, no timing constraint). (An in-game white "Bait" circle penalizes the score and is not a trial type.)
 
 Events
 ------

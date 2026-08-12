@@ -30,6 +30,10 @@ The two rests use the acq-pre / acq-post label rather than run-01/02 because the
 are not interchangeable repetitions: one is recorded before the joint task and one
 after. Keeping a single task-rest allows for tools to find all task-rest.
 
+Task Instructions (stimuli/)
+--------------------------
+Participants received instructions for task-duorhythm in a virtual tutorial. To view a sample of instructions provided in the tutorial, please see the .png file in the stimuli/ folder.
+
 Task Structure and Conditions
 -----------------------------
 The game is organized into 10 blocks x 9 trials = 90 trials of 12 s each. Each

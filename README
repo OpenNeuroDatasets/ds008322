@@ -40,12 +40,12 @@ sub-*_task-duorhythm_events.tsv contains, per participant:
 - 90 trial rows: onset, duration (~12 s), trial_type (above), value (trigger
   code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), and trial_number.
 - button-press rows (trial_type = "buttonpress"): Every shot fired by that
-  participant, with shot_target = the target struck (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the trial_number it falls in. Column definitions are in task-duorhythm_events.json.
+  participant, with shot_target = the target struck (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the trial_number it falls in. Column definitions are in sub-*_task-duorhythm_events.json.
 
 Behavioural Responses (beh/)
 ---------------------------
 The continuous game signals (100 Hz) are stored per participant in the behavioural
-(beh/) datatype as sub-*/beh/sub-*_task-duorhythm_recording-gamedata_physio.tsv.gz.
+(beh/) datatype in sub-*_task-duorhythm_recording-gamedata_physio.tsv.gz.
 - SamplingFrequency = 100 Hz.
 - StartTime aligns the sample grid to the EEG via the shared LSL clock.
 - Columns: crosshair_x / crosshair_y, crosshair_vx / crosshair_vy, shot_confirm,
@@ -55,11 +55,10 @@ EEG Acquisition
 ---------------
 Information regarding EEG acquisition can be found in sub-*_task-duorhythm_eeg.json files. Some details are as follows:
 - Amplifier: Brain Products BrainAmp.
-- Cap: Easycap "Standard 64Ch actiCAP snap"
-  (CACS-64), 64 channels in the standard extended 10/10 layout
+- Cap: Easycap Standard 64Ch actiCAP snap (CACS-64). 64 channels in the 10/10 layout
   (EEGPlacementScheme).
 - No electrode-position files (electrodes.tsv / coordsystem.json) are included, because
-  electrode positions were not digitised for individual participants. BrainVision files
+  electrode positions were not digitized for individual participants. BrainVision files
   store channel labels only, not 3D coordinates. To obtain template coordinates, apply MNE's
   `easycap-M1` montage.
 - Sampling frequency: 1000 Hz. Data stored in microvolts (BrainVision float).

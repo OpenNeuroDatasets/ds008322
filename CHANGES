@@ -1,3 +1,5 @@
+1.0.8 2026-08-13
+  - Cleaned up the README. Removed information related to BIDS conversion that did not apply here. Formatted text to be more readable (e.g., adding bullet points, using `` for column names, etc.).
 1.0.7 2026-08-12
   - Added stimuli/ folder which includes sample tutorial instructions in task-duorhythm_instructions.png.
   - Updated the README file to add information on stimuli/, events, provide a task description for task-duorhythm, and cut unnecessary text (e.g., redundant information).

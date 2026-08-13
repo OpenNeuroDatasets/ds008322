@@ -36,11 +36,10 @@ Trial types are: "alternating" (code = 1; target colour = black; behaviour = par
 Events
 ------
 sub-*_task-duorhythm_events.tsv contains, per participant:
-- 90 trial rows
-- Columns: `onset`, `duration` (~12 s), `trial_type` (above), `value` (trigger
-  code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), and `trial_number`.
-- button-press rows (trial_type = "buttonpress"): Every shot fired by that
-  participant, with `shot_target` = the target struck (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the `trial_number` it falls in. Column definitions are in sub-*_task-duorhythm_events.json.
+- 90 trial rows with columns `onset`, `duration` (~12 s), `trial_type` (above), `value` (trigger
+  code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), `shot_target`, `trial_number`, and `sample`.
+- button-press rows (`trial_type` = "buttonpress"): Every shot fired by that
+  participant, with `shot_target` indicating the target hit (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the `trial_number` it falls in. Column definitions are in task-duorhythm_events.json.
 
 Behavioural Responses (beh/)
 ---------------------------
@@ -48,8 +47,8 @@ The continuous game signals (100 Hz) are stored per participant in the behaviour
 (beh/) datatype in sub-*_task-duorhythm_recording-gamedata_physio.tsv.gz.
 - SamplingFrequency = 100 Hz.
 - StartTime aligns the sample grid to the EEG via the shared LSL clock.
-- Columns: crosshair_x / crosshair_y, crosshair_vx / crosshair_vy, shot_confirm,
-shot_target, and the shared block score. Descriptions of the columns can be found in the .json files in the beh/ folder.
+- Columns: `crosshair_x`,`crosshair_y`, `crosshair_vx` , `crosshair_vy`, `shot_confirm`,
+`shot_target`, and `score`. Descriptions of the columns can be found in the .json files in the beh/ folder.
 
 EEG Acquisition
 ---------------
@@ -79,14 +78,14 @@ Data-Quality Notes
 -------------------------------------------
 - sub-02, sub-04, sub-10, sub-20: only the pre-task half of the
   questionnaire was recorded (due to software logging limitation + procedural oversight).
-  The pre-task subscales (display_comfort = Part 2, game_familiarity = Part 3)
-  are retained, and the post-experiment subscales (coordination_skill = Part 4,
+  The pre-task questionnaire (display_comfort = Part 2, game_familiarity = Part 3)
+  are retained, and the post-experiment questionnaire (coordination_skill = Part 4,
   coordination_level = Part 5) are n/a (see KnownIssues in those phenotype JSONs).
 
 Conversion
 -----------------------
 Converted from the original Lab Streaming Layer .xdf recordings with
-the pipeline notebooks (`1_eeg_to_bids.ipynb` for EEG, `2_build_events.ipynb` for events, `3_build_physio.ipynb` for continuous game data, and `4_build_phenotype.ipynb` for the questionnaire, which can be found at [https://github.com/Froese-Unit/duorhythm-code](https://github.com/Froese-Unit/duorhythm-code).
+the pipeline notebooks (`1_eeg_to_bids.ipynb` for EEG, `2_build_events.ipynb` for events, `3_build_physio.ipynb` for continuous game data, and `4_build_phenotype.ipynb` for the questionnaire data, which can be found at [https://github.com/Froese-Unit/duorhythm-code](https://github.com/Froese-Unit/duorhythm-code).
 
 Ethics: approved by the OIST Human Subjects Research Review Committee, approval
 no. HSR-2024-019-5.

@@ -67,15 +67,13 @@ Information regarding EEG acquisition can be found in sub-*_task-duorhythm_eeg.j
 
 Questionnaire (phenotype/)
 --------------------------
-The self-report questionnaire has five parts. 
-- Part 1 (demographics + relationship) is in participants.tsv. 
-- Parts 2-5 are four distinct 9-item Likert subscales (1 = Strongly Disagree .. 7 =
-Strongly Agree), each its own phenotype file (one row per participant; items are
-positional item_01..item_09 with the exact wording in the matching .json):
--- phenotype/display_comfort.tsv      (Part 2, pre-task)
--- phenotype/game_familiarity.tsv     (Part 3, pre-task)
--- phenotype/coordination_skill.tsv   (Part 4, post-task)
--- phenotype/coordination_level.tsv   (Part 5, post-task)
+The self-report questionnaire has five parts. Part 1 (demographics + relationship) is in participants.tsv. Parts 2-5 are four distinct 9-item Likert subscales (1 = Strongly Disagree to 7 =
+Strongly Agree), each with its own phenotype file (one row per participant; items are
+positional item_01 to item_09 with the exact wording in the matching .json):
+- phenotype/display_comfort.tsv (Part 2, pre-task)
+- phenotype/game_familiarity.tsv (Part 3, pre-task)
+- phenotype/coordination_skill.tsv (Part 4, post-task)
+- phenotype/coordination_level.tsv (Part 5, post-task)
 
 Data-Quality Notes
 -------------------------------------------

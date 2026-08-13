@@ -7,14 +7,13 @@ EEG hyperscanning dataset of pairs (dyads) of participants playing a cooperative
 two-player rhythmic shooting game where partners coordinate the timing of
 their shots. Resting-state recordings are also included. The data were recorded using Lab Streaming Layer (LSL) and the game was created in Unity.
 
-Ten dyads were recorded. Each session simultaneously recorded both members of a dyad on a single Brain
-Products amplifier as one 129-channel stream: participant 1 on a 64-channel cap and participant 2 on a second 64-channel cap. In this BIDS release, each dyad is split into two participant ID codes to more easily allow researchers to conduct single-participant analyses. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned. Partner pairs are mapped in participants.tsv (`pair`, `partner`).
+Ten dyads were recorded. Each session simultaneously recorded both members of a dyad on a single Brain Products amplifier as one 129-channel stream: participant 1 on a 64-channel cap and participant 2 on a second 64-channel cap. In this BIDS release, each dyad is split into two participant ID codes to more easily allow researchers to conduct single-participant analyses. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned. Partner pairs are mapped in participants.tsv (`pair`, `partner`).
 
 Participants and Pairing
 --------------------
 - 10 dyads -> 20 participants (sub-01 .. sub-20).
 - See participants.tsv for the `pair`/`partner` links and self-reported
-  gender / age band / acquaintance_length (how long the pair had known each other).
+  `gender` / `age band` / `acquaintance_length` (how long the pair had known each other).
 
 Tasks
 --------------------------
@@ -37,10 +36,11 @@ Trial types are: "alternating" (code = 1; target colour = black; behaviour = par
 Events
 ------
 sub-*_task-duorhythm_events.tsv contains, per participant:
-- 90 trial rows: onset, duration (~12 s), trial_type (above), value (trigger
-  code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), and trial_number.
+- 90 trial rows
+- Columns: `onset`, `duration` (~12 s), `trial_type` (above), `value` (trigger
+  code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), and `trial_number`.
 - button-press rows (trial_type = "buttonpress"): Every shot fired by that
-  participant, with shot_target = the target struck (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the trial_number it falls in. Column definitions are in sub-*_task-duorhythm_events.json.
+  participant, with `shot_target` = the target struck (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the `trial_number` it falls in. Column definitions are in sub-*_task-duorhythm_events.json.
 
 Behavioural Responses (beh/)
 ---------------------------

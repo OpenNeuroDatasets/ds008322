@@ -11,9 +11,9 @@ Ten dyads were recorded. Each session simultaneously recorded both members of a 
 
 Participants and Pairing
 --------------------
-- 10 dyads -> 20 participants (sub-01 .. sub-20).
+- 10 dyads -> 20 participants (sub-01 to sub-20).
 - See participants.tsv for the `pair`/`partner` links and self-reported
-  `gender`, `age band`, and `acquaintance_length` (how long the pair had known each other).
+  `gender`, `age_band`, and `acquaintance_length` (how long the pair had known each other).
 
 Tasks
 --------------------------

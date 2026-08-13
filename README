@@ -32,7 +32,7 @@ block contains 3 trials of each of three target types. (So, 30 trials per condit
 overall.) On each trial, both participants shoot a target together; the target
 type indicates how their shots must be timed:
 
-Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely with no timing constraint). In each condition, there was also an in-game white "Bait" circle that reduces the score when hit and is not a trial type.
+Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely with no timing constraint). In each condition, there was also an in-game white "bait" circle that reduces the score when hit and is not a trial type.
 
 Events
 ------
@@ -45,39 +45,38 @@ sub-*_task-duorhythm_events.tsv contains, per participant:
 Behavioural Responses (beh/)
 ---------------------------
 The continuous game signals (100 Hz) are stored per participant in the behavioural
-(beh/) datatype as sub-XX/beh/sub-XX_task-duorhythm_recording-gamedata_physio.tsv.gz.
-Columns: crosshair_x / crosshair_y, crosshair_vx / crosshair_vy, shot_confirm,
-shot_target, and the shared block score. Crosshair positions (crosshair_x/_y) are the
-game's 2D Unity world coordinates and velocities (crosshair_vx/_vy)
-are their per-second time-derivatives (Unity world units per second). SamplingFrequency
-= 100 Hz. StartTime aligns the sample grid to the EEG via the shared LSL clock.
+(beh/) datatype as sub-*/beh/sub-*_task-duorhythm_recording-gamedata_physio.tsv.gz.
+- SamplingFrequency = 100 Hz.
+- StartTime aligns the sample grid to the EEG via the shared LSL clock.
+- Columns: crosshair_x / crosshair_y, crosshair_vx / crosshair_vy, shot_confirm,
+shot_target, and the shared block score. Descriptions of the columns can be found in the .json files in the beh/ folder.
 
 EEG Acquisition
 ---------------
-- Amplifier: Brain Products BrainAmp; cap: EASYCAP "Standard 64Ch actiCAP snap"
-  (order code CACS-64), 64 channels in the standard extended 10/10 layout
+Information regarding EEG acquisition can be found in sub-*_task-duorhythm_eeg.json files. Some details are as follows:
+- Amplifier: Brain Products BrainAmp.
+- Cap: Easycap "Standard 64Ch actiCAP snap"
+  (CACS-64), 64 channels in the standard extended 10/10 layout
   (EEGPlacementScheme).
 - No electrode-position files (electrodes.tsv / coordsystem.json) are included, because
   electrode positions were not digitised for individual participants. BrainVision files
-  store channel labels only, not 3D coordinates; the layout is the standard cap template,
-  fully specified by the channel names. To obtain template coordinates, apply MNE's
+  store channel labels only, not 3D coordinates. To obtain template coordinates, apply MNE's
   `easycap-M1` montage.
 - Sampling frequency: 1000 Hz. Data stored in microvolts (BrainVision float).
-- Online reference: FCz. Ground: Fpz. Impedance kept below 25 kOhm.
-- Hardware band-pass: 0.016 - 1000 Hz. Power line noise at 60 Hz. SoftwareFilters = n/a.
-- Recording dates were dropped during conversion, so the data carry no acquisition
-  timestamps.
+- Reference electrode: FCz. Ground electrode: Fpz. Impedance kept below 25 kilohm.
+- The online low- and high-cutoff frequencies: 0.016 - 1000 Hz (respectively). Power line noise at 60 Hz. SoftwareFilters = n/a.
 
 Questionnaire (phenotype/)
 --------------------------
-The self-report questionnaire has five parts. Part 1 (demographics + relationship) is in participants.tsv. Parts
-2-5 are four distinct 9-item Likert subscales (1 = Strongly Disagree .. 7 =
+The self-report questionnaire has five parts. 
+- Part 1 (demographics + relationship) is in participants.tsv. 
+- Parts 2-5 are four distinct 9-item Likert subscales (1 = Strongly Disagree .. 7 =
 Strongly Agree), each its own phenotype file (one row per participant; items are
 positional item_01..item_09 with the exact wording in the matching .json):
-- phenotype/display_comfort.tsv      (Part 2, pre-task)
-- phenotype/game_familiarity.tsv     (Part 3, pre-task)
-- phenotype/coordination_skill.tsv   (Part 4, post-task)
-- phenotype/coordination_level.tsv   (Part 5, post-task)
+-- phenotype/display_comfort.tsv      (Part 2, pre-task)
+-- phenotype/game_familiarity.tsv     (Part 3, pre-task)
+-- phenotype/coordination_skill.tsv   (Part 4, post-task)
+-- phenotype/coordination_level.tsv   (Part 5, post-task)
 
 Data-Quality Notes
 -------------------------------------------
@@ -90,9 +89,7 @@ Data-Quality Notes
 Conversion
 -----------------------
 Converted from the original Lab Streaming Layer .xdf recordings with
-the pipeline notebooks (`1_eeg_to_bids.ipynb` for EEG, `2_build_events.ipynb` for events, `3_build_physio.ipynb` for continuous game data, and `4_build_phenotype.ipynb` for the questionnaire, which can be found at https://github.com/Froese-Unit/duorhythm-code), using pyxdf, MNE, and MNE-BIDS. EEG conversion split the 128 EEG channels into the two participants (rows 1-64 = P1, 65-128 = P2; the
-flat `MkIdx` channel was dropped), and applied the
-easycap-M1 montage.
+the pipeline notebooks (`1_eeg_to_bids.ipynb` for EEG, `2_build_events.ipynb` for events, `3_build_physio.ipynb` for continuous game data, and `4_build_phenotype.ipynb` for the questionnaire, which can be found at [https://github.com/Froese-Unit/duorhythm-code](https://github.com/Froese-Unit/duorhythm-code).
 
 Ethics: approved by the OIST Human Subjects Research Review Committee, approval
 no. HSR-2024-019-5.

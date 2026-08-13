@@ -1,0 +1,103 @@
+Duorhythm: EEG hyperscanning during dyadic joint rhythmic action
+================================================================
+
+Overview
+--------
+EEG hyperscanning dataset of pairs (dyads) of participants playing a cooperative
+two-player rhythmic shooting game where partners coordinate the timing of
+their shots. Resting-state recordings are also included. The data were recorded using Lab Streaming Layer (LSL) and the game was created in Unity.
+
+Ten dyads were recorded. Each session simultaneously recorded both members of a dyad on a single Brain Products amplifier as one 129-channel stream: participant 1 on a 64-channel cap and participant 2 on a second 64-channel cap. In this BIDS release, each dyad is split into two participant ID codes to more easily allow researchers to conduct single-participant analyses. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned. Partner pairs are mapped in participants.tsv (`pair`, `partner`).
+
+Participants and Pairing
+--------------------
+- 10 dyads -> 20 participants (sub-01 to sub-20).
+- See participants.tsv for the `pair`/`partner` links and self-reported
+  `gender`, `age_band`, and `acquaintance_length` (how long the pair had known each other).
+
+Tasks
+--------------------------
+- task-duorhythm: the cooperative shooting game (~20 min). Participants were instructed to shoot a target in three separate conditions: either at alternating times with their partner, simultaneously with their partner, or independently without coordinated timing.
+- task-rest: resting-state recordings before (pre) and after (post) the task. Each task-rest was 2 minutes. Participants were instructed to keep their eyes open, hands on the table, and to view the fixation cross on the screen. The two rests use the acq-pre / acq-post label.
+
+Task Instructions (stimuli/)
+--------------------------
+Participants received instructions for task-duorhythm in a virtual tutorial. To view a sample of instructions provided in the tutorial, please see the .png file in the stimuli/ folder.
+
+Task Structure and Conditions
+-----------------------------
+The game is organized into 10 blocks x 9 trials = 90 trials of 12 s each. Each
+block contains 3 trials of each of three target types. (So, 30 trials per condition
+overall.) On each trial, both participants shoot a target together; the target
+type indicates how their shots must be timed:
+
+Trial types are: "alternating" (code = 1; target colour = black; behaviour = partners shoot alternately), "simultaneous" (code = 2; target colour = green; behaviour = partners shoot simultaneously), and "free" (code = 3; target colour = blue; behaviour = partners shoot freely with no timing constraint). In each condition, there was also an in-game white "bait" circle that reduces the score when hit and is not a trial type.
+
+Events
+------
+sub-*_task-duorhythm_events.tsv contains, per participant:
+- 90 trial rows with columns `onset`, `duration` (~12 s), `trial_type` (above), `value` (trigger
+  code marking the start of the trial type: 11 = alternating, 21 = simultaneous, and 31 = free), `shot_target`, `trial_number`, and `sample`.
+- button-press rows (`trial_type` = "buttonpress"): Every shot fired by that
+  participant, with `shot_target` indicating the target hit (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the `trial_number` it falls in. Column definitions are in task-duorhythm_events.json.
+
+Behavioural Responses (beh/)
+---------------------------
+The continuous game signals (100 Hz) are stored per participant in the behavioural
+(beh/) datatype in sub-*_task-duorhythm_recording-gamedata_physio.tsv.gz.
+- SamplingFrequency = 100 Hz.
+- StartTime aligns the sample grid to the EEG via the shared LSL clock.
+- Columns: `crosshair_x`,`crosshair_y`, `crosshair_vx` , `crosshair_vy`, `shot_confirm`,
+`shot_target`, and `score`. Descriptions of the columns can be found in the .json files in the beh/ folder.
+
+EEG Acquisition
+---------------
+Information regarding EEG acquisition can be found in sub-*_task-duorhythm_eeg.json files. Some details are as follows:
+- Amplifier: Brain Products BrainAmp.
+- Cap: Easycap Standard 64Ch actiCAP snap (CACS-64). 64 channels in the 10/10 layout
+  (EEGPlacementScheme).
+- No electrode-position files (electrodes.tsv / coordsystem.json) are included, because
+  electrode positions were not digitized for individual participants. BrainVision files
+  store channel labels only, not 3D coordinates. To obtain template coordinates, apply MNE's
+  `easycap-M1` montage.
+- Sampling frequency: 1000 Hz. Data stored in microvolts (BrainVision float).
+- Reference electrode: FCz. Ground electrode: Fpz. Impedance kept below 25 kilohm.
+- The online low- and high-cutoff frequencies: 0.016 - 1000 Hz (respectively). Power line noise at 60 Hz. SoftwareFilters = n/a.
+
+Questionnaire (phenotype/)
+--------------------------
+The self-report questionnaire has five parts. Part 1 (demographics + relationship) is in participants.tsv. Parts 2-5 are four distinct 9-item Likert subscales (1 = Strongly Disagree to 7 =
+Strongly Agree), each with its own phenotype file (one row per participant; items are
+positional item_01 to item_09 with the exact wording in the matching .json):
+- phenotype/display_comfort.tsv (Part 2, pre-task)
+- phenotype/game_familiarity.tsv (Part 3, pre-task)
+- phenotype/coordination_skill.tsv (Part 4, post-task)
+- phenotype/coordination_level.tsv (Part 5, post-task)
+
+Data-Quality Notes
+-------------------------------------------
+- sub-02, sub-04, sub-10, sub-20: only the pre-task half of the
+  questionnaire was recorded (due to software logging limitation + procedural oversight).
+  The pre-task questionnaire (display_comfort = Part 2, game_familiarity = Part 3)
+  are retained, and the post-experiment questionnaire (coordination_skill = Part 4,
+  coordination_level = Part 5) are n/a (see KnownIssues in those phenotype JSONs).
+
+Conversion
+-----------------------
+Converted from the original Lab Streaming Layer .xdf recordings with
+the pipeline notebooks (`1_eeg_to_bids.ipynb` for EEG, `2_build_events.ipynb` for events, `3_build_physio.ipynb` for continuous game data, and `4_build_phenotype.ipynb` for the questionnaire data, which can be found at [https://github.com/Froese-Unit/duorhythm-code](https://github.com/Froese-Unit/duorhythm-code).
+
+Ethics: approved by the OIST Human Subjects Research Review Committee, approval
+no. HSR-2024-019-5.
+
+References
+----------
+Appelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A., & Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. *Journal of Open Source Software,4*(44),1896. [https://doi.org/10.21105/joss.01896](https://doi.org/10.21105/joss.01896)
+
+Froese-Unit. (2026). *Duorhythm — code* [Computer software]. GitHub. [https://github.com/Froese-Unit/duorhythm-code](https://github.com/Froese-Unit/duorhythm-code)
+
+Kothe, C., Shirazi, S. Y., Stenner, T., Medine, D., Boulay, C., Grivich, M. I., Artoni, F., Mullen, T., Delorme, A., & Makeig, S. (2025). The Lab Streaming Layer for synchronized multimodal recording. *Imaging Neuroscience, 3*, IMAG.a.136. [https://doi.org/10.1162/IMAG.a.136](https://doi.org/10.1162/IMAG.a.136)
+
+Pernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., & Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. *Scientific Data, 6*, 103. [https://doi.org/10.1038/s41597-019-0104-8](https://doi.org/10.1038/s41597-019-0104-8)
+
+Unity Technologies. (2023). *Unity* (Version 2022.3.10f1) [Computer software]. [https://unity.com](https://unity.com)

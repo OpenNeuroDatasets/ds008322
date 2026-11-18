@@ -7,7 +7,7 @@ EEG hyperscanning dataset of pairs (dyads) of participants playing a cooperative
 two-player rhythmic shooting game where partners coordinate the timing of
 their shots. Resting-state recordings are also included. The data were recorded using Lab Streaming Layer (LSL) and the game was created in Unity.
 
-Ten dyads were recorded. Each session simultaneously recorded both members of a dyad on a single Brain Products amplifier as one 129-channel stream: participant 1 on a 64-channel cap and participant 2 on a second 64-channel cap. In this BIDS release, each dyad is split into two participant ID codes to more easily allow researchers to conduct single-participant analyses. Because both caps share one amplifier clock, the two participants of a pair are sample-aligned. Partner pairs are mapped in participants.tsv (`pair`, `partner`).
+Ten dyads were recorded. In each session, the two participants' 64-channel caps were connected to separate Brain Products BrainAmp amplifiers, which were recorded together by one BrainVision Recorder as a single hardware-synchronized 129-channel stream (two 64-channel amplifiers plus an empty marker channel). In this BIDS release, each dyad is split into two participant ID codes to more easily allow researchers to conduct single-participant analyses. Because both amplifiers were recorded on one hardware clock, the two participants of a pair are sample-aligned. Partner pairs are mapped in participants.tsv (`pair`, `partner`).
 
 Participants and Pairing
 --------------------
@@ -41,6 +41,8 @@ sub-*_task-duorhythm_events.tsv contains, per participant:
 - button-press rows (`trial_type` = "buttonpress"): Every shot fired by that
   participant, with `shot_target` indicating the target hit (0 = miss/no target, 1= black, 2 = green, 3 = blue, and 4 = white) and the `trial_number` it falls in. Column definitions are in task-duorhythm_events.json.
 
+Event timing: `onset` and `sample` place each event on the EEG recording's time base. They were computed from the LSL timestamps without correcting the 47 ms EEG pipeline delay measured in the data descriptor's technical validation. Because the EEG timestamps lag the Unity markers, the EEG signal for an event begins 47 ms after its listed onset; for event-locked analyses, add 0.047 s to `onset` (47 to `sample`). The delay is the same for both participants of a dyad.
+
 Behavioural Responses (beh/)
 ---------------------------
 The continuous game signals (100 Hz) are stored per participant in the behavioural
@@ -53,7 +55,7 @@ The continuous game signals (100 Hz) are stored per participant in the behaviour
 EEG Acquisition
 ---------------
 Information regarding EEG acquisition can be found in sub-*_task-duorhythm_eeg.json files. Some details are as follows:
-- Amplifier: Brain Products BrainAmp.
+- Amplifiers: two Brain Products BrainAmp amplifiers (one per participant), recorded together by BrainVision Recorder.
 - Cap: Easycap Standard 64Ch actiCAP snap (CACS-64). 64 channels in the 10/10 layout
   (EEGPlacementScheme).
 - No electrode-position files (electrodes.tsv / coordsystem.json) are included, because
@@ -76,11 +78,13 @@ positional item_01 to item_09 with the exact wording in the matching .json):
 
 Data-Quality Notes
 -------------------------------------------
-- sub-02, sub-04, sub-10, sub-20: only the pre-task half of the
+- sub-02, sub-04, sub-10, sub-20 (each the second participant of their pair): only the pre-task half of the
   questionnaire was recorded (due to software logging limitation + procedural oversight).
   The pre-task questionnaire (display_comfort = Part 2, game_familiarity = Part 3)
   are retained, and the post-experiment questionnaire (coordination_skill = Part 4,
   coordination_level = Part 5) are n/a (see KnownIssues in those phenotype JSONs).
+- The BrainVision .vmrk files contain no event markers; all events are in the events.tsv files.
+- pair-04: the two members (sub-07, sub-08) gave different `acquaintance_length` answers; both self-reports are retained.
 
 Conversion
 -----------------------

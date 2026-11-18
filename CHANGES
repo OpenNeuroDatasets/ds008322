@@ -1,3 +1,8 @@
+1.0.10 2026-11-18
+  - README: amplifier description corrected (two BrainAmp amplifiers recorded together by one BrainVision Recorder as a single hardware-synchronized stream)
+  - README: event-timing note (events.tsv onsets are not corrected for the 47 ms EEG pipeline delay; add 0.047 s for event-locked analyses)
+  - README: notes on empty .vmrk files and pair-04 acquaintance answers; missing post-task questionnaires identified as second participants
+  - dataset_description.json: author name forms match the data descriptor; HowToAcknowledge updated
 1.0.9 2026-08-13
   -  Adjusted formatting in Participants and Pairing in README (e.g., changed ‘age band’ to ‘age_band’ to align with column name).
 1.0.8 2026-08-13

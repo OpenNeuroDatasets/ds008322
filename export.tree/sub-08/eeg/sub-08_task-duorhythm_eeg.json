@@ -1,0 +1,30 @@
+{
+    "TaskName": "duorhythm",
+    "Manufacturer": "Brain Products",
+    "PowerLineFrequency": 60,
+    "SamplingFrequency": 1000.0,
+    "SoftwareFilters": "n/a",
+    "RecordingDuration": 1264.999,
+    "RecordingType": "continuous",
+    "EEGReference": "FCz",
+    "EEGGround": "Fpz",
+    "EEGPlacementScheme": "based on the extended 10/10 system (EasyCap M1 layout)",
+    "EEGChannelCount": 64,
+    "EOGChannelCount": 0,
+    "ECGChannelCount": 0,
+    "EMGChannelCount": 0,
+    "MiscChannelCount": 0,
+    "TriggerChannelCount": 0,
+    "ManufacturersModelName": "BrainAmp",
+    "CapManufacturer": "Brain Products",
+    "CapManufacturersModelName": "actiCAP snap (64 channel)",
+    "InstitutionName": "Okinawa Institute of Science and Technology Graduate University",
+    "HardwareFilters": {
+        "HighpassFilter": {
+            "CutoffFrequency": 0.016
+        },
+        "LowpassFilter": {
+            "CutoffFrequency": 1000
+        }
+    }
+}
